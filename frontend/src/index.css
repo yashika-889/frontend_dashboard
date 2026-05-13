@@ -1,0 +1,28 @@
+@import "tailwindcss";
+
+@theme {
+  /* Hintro Brand Colors */
+  --color-brand-black: #000000;
+  --color-brand-gray-text: rgba(0, 0, 0, 0.8);
+  --color-brand-gray-light: rgba(0, 0, 0, 0.4);
+  --color-brand-border: #F0F0F0;
+  --color-brand-border-dark: rgba(0, 0, 0, 0.2);
+  --color-brand-blue: #6686FF;
+  --color-brand-blue-bg: rgba(102, 134, 255, 0.12);
+  --color-brand-sidebar-inactive: #202224;
+
+  /* Stat Card Specific Bgs */
+  --color-stat-red: #FFE1E1;
+  --color-stat-cyan: #E1FCFF;
+  --color-stat-green: #E1FFE4;
+  --color-stat-purple: #EBE1FF;
+
+  /* Shadows */
+  --shadow-hintro-sm: 0px 0px 4px rgba(0, 0, 0, 0.25);
+}
+
+@layer base {
+  body {
+    @apply font-['Inter'] antialiased bg-white text-brand-black;
+  }
+}
