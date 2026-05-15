@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Sidebar from "../components/sidebar/sidebar";
 import MobileSidebar from "../components/sidebar/mobileSidebar";
-import Navbar from "../components/navbar/navbar";
+import Navbar from "../components/navbar/Navbar";
 import FeedbackModal from "../components/feedback/FeedbackModal";
 import FeedbackHistory from "../pages/FeedbackHistory";
 import LogoutModal from "../components/auth/LogoutModal";
