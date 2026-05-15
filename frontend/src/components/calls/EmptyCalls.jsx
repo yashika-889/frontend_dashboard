@@ -1,28 +1,34 @@
-import { RiPhoneLine } from "react-icons/ri";
+import { RiCalendarLine } from "react-icons/ri";
 
 function EmptyCalls() {
   return (
-    <div className="flex flex-col items-center justify-center bg-white border border-black/10 rounded-[16px] w-full max-w-[802px] h-[220px] md:h-[188px] p-6 mx-auto">
+    <div className="flex flex-col items-center bg-white border border-[#F0F0F0] rounded-[16px] w-full max-w-[802px] min-h-[188px] mx-auto overflow-hidden pb-6 md:pb-0">
       
-      {/* Icon */}
-      <div className="w-[40px] h-[40px] bg-[#E1E7FF] rounded-[8px] flex items-center justify-center mb-4">
-        <RiPhoneLine size={20} className="text-[#6686FF]" />
+      {/* Group of Icon and Text (Frame 428) */}
+      <div className="flex flex-col items-center gap-[12px] mt-[26px] px-4">
+        
+        {/* Icon Box (Frame 426) */}
+        <div className="w-[34px] h-[36px] bg-[rgba(102,134,255,0.12)] rounded-[8px] flex items-center justify-center p-[10px]">
+          <RiCalendarLine size={16} className="text-[#6686FF]" />
+        </div>
+
+        {/* Text Area (Frame 427) */}
+        <div className="flex flex-col items-center gap-[4px] w-full max-w-[355px]">
+          <h4 className="text-[14px] font-medium text-black tracking-[0.5px] leading-[17px] text-center">
+            No Recent Calls
+          </h4>
+          <p className="text-[10px] font-normal text-[rgba(0,0,0,0.4)] tracking-[0.3px] leading-[12px] text-center w-full max-w-[302px]">
+            Connect your Google Calendar to see upcoming meetings, get reminders, and join calls directly from Hintro.
+          </p>
+        </div>
       </div>
 
-      {/* Text */}
-      <div className="flex flex-col items-center text-center gap-1 mb-5">
-        <h4 className="text-[14px] md:text-[15px] font-bold text-black tracking-[0.3px]">
-          No Recent Calls
-        </h4>
-        <p className="text-[11px] md:text-[12px] font-normal text-black/40 tracking-[0.3px] max-w-[280px]">
-          Connect your Google Calendar to see upcoming meetings, get reminders, and join calls directly from Hintro.
-        </p>
+      {/* Button (Frame 429) */}
+      <div className="flex justify-center w-full mt-[16px] mb-[26px]">
+        <button className="w-auto min-w-[78px] md:min-w-[119px] h-[31px] border-[0.5px] border-black rounded-[4px] text-[10px] md:text-[12px] font-medium text-black flex items-center justify-center px-[12px] md:px-[24px] tracking-[-0.16px] hover:bg-black/40 transition-all font-['Inter']">
+          Start a Call
+        </button>
       </div>
-
-      {/* Button */}
-      <button className="w-[100px] md:w-[78px] h-[28px] md:h-[24px] border border-black/50 rounded-[4px] text-[11px] font-medium text-black hover:bg-gray-50 transition-all">
-        Start a call
-      </button>
     </div>
   );
 }

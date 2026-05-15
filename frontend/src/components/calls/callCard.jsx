@@ -1,50 +1,68 @@
-import { FiMoreVertical } from "react-icons/fi";
+import profileImg from "../../assets/profile.jpg";
 
 function CallCard({ title, time }) {
-  // Mock participant avatars
-  const avatars = [
-    "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100",
-    "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100",
-    "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100",
-  ];
-
   return (
-    <div className="flex items-center justify-between py-3 px-2.5 hover:bg-gray-50 rounded-xl transition-colors group">
-      {/* Left Area: Icon + Details */}
-      <div className="flex items-center gap-3">
-        {/* Purple Initial Icon */}
-        <div className="w-8 h-8 rounded-lg bg-[#8B5CF6] text-white text-sm font-bold flex items-center justify-center shrink-0">
-          K
+    <div className="flex flex-row items-center justify-between w-full max-w-[786px] h-[35px] py-0 px-0 group">
+      {/* Frame 417: Icon + Details */}
+      <div className="flex flex-row items-center gap-[16px] w-[130px] h-[35px]">
+        {/* Frame 541: Icon Box */}
+        <div className="relative w-[29px] h-[29px] bg-[#8A38F5] rounded-[4px] shrink-0">
+          <span className="absolute left-[10px] top-[6px] w-[10px] h-[17px] text-[14px] font-normal leading-[17px] text-black text-center tracking-[0.5px]">
+            K
+          </span>
         </div>
 
-        {/* Text and Participant Avatars Stack */}
-        <div className="flex flex-col">
-          <span className="text-[13px] font-semibold text-[#111827] leading-tight">
+        {/* Frame 416: Title + Avatars */}
+        <div className="flex flex-col items-start gap-[4px] w-[85px] h-[35px]">
+          <span className="w-[85px] h-[17px] text-[14px] font-normal text-black leading-[17px] tracking-[0.5px] text-center truncate">
             {title}
           </span>
 
-          {/* Participant avatars */}
-          <div className="flex items-center -space-x-1.5 mt-1">
-            {avatars.map((src, idx) => (
-              <img
+          {/* Frame 523: Avatars */}
+          <div className="relative w-[30px] h-[14px] shrink-0">
+            {[0, 8, 16].map((offset, idx) => (
+              <div 
                 key={idx}
-                src={src}
-                alt="participant"
-                className="w-4 h-4 rounded-full object-cover border border-white"
-              />
+                className="absolute top-0 w-[14px] h-[14px] rounded-[350px] bg-[#D9D9D9] overflow-hidden"
+                style={{ left: `${offset}px` }}
+              >
+                <img
+                  src={profileImg}
+                  alt="participant"
+                  className="absolute w-[17.5px] h-[26.25px] max-w-none"
+                  style={{ 
+                    left: '-1.05px', 
+                    top: '-2.8px'
+                  }}
+                />
+              </div>
             ))}
           </div>
         </div>
       </div>
 
-      {/* Right Area: Time + Options */}
-      <div className="flex items-center gap-6">
-        <span className="text-[11px] font-medium text-[#6B7280]">
+      {/* Frame 534: Time + AI Interactions + Options */}
+      <div className="flex flex-row items-center gap-[12px] h-[17px]">
+        <span className="w-auto text-[12px] font-medium text-black leading-[15px] tracking-[0.5px] whitespace-nowrap">
           {time}
         </span>
-        <button className="text-[#9CA3AF] group-hover:text-gray-700 transition-colors">
-          <FiMoreVertical size={16} />
-        </button>
+
+        {/* AI Interactions (Hidden by default, shown only on hover) */}
+        <div className="hidden group-hover:flex flex-row items-center gap-[6px] transition-all duration-200">
+          <svg width="14" height="14" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M14 2.66667V10.6667C14 11.0349 13.7015 11.3333 13.3333 11.3333H5.33333L2 14.6667V2.66667C2 2.29848 2.29848 2 2.66667 2H13.3333C13.7015 2 14 2.29848 14 2.66667Z" stroke="black" strokeOpacity="0.6" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+          </svg>
+          <span className="text-[12px] font-normal text-black/60 tracking-[0.3px] whitespace-nowrap">
+            6 AI Interactions
+          </span>
+        </div>
+        
+        {/* Icon (3 vertical dots) */}
+        <div className="flex flex-col justify-between items-center w-[3px] h-[16px] shrink-0 cursor-pointer py-[1px]">
+          <div className="w-[3px] h-[3px] bg-black rounded-full" />
+          <div className="w-[3px] h-[3px] bg-black rounded-full" />
+          <div className="w-[3px] h-[3px] bg-black rounded-full" />
+        </div>
       </div>
     </div>
   );

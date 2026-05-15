@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { FiChevronDown, FiMenu, FiLogOut } from "react-icons/fi";
+import profileImg from "../../assets/profile.jpg";
 
 function Navbar({ onMenuClick, currentUser, setCurrentUser, onLogoutClick, title = "Dashboard" }) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
@@ -17,50 +18,62 @@ function Navbar({ onMenuClick, currentUser, setCurrentUser, onLogoutClick, title
   }, []);
 
   return (
-    <header className="flex items-center justify-between bg-white px-4 md:px-8 h-[64px] border-b border-brand-border shadow-[0px_0px_4px_rgba(0,0,0,0.25)] relative z-[100]">
+    <header className="flex items-center justify-between bg-white h-[64px] border-b border-[#E2E2E8] relative z-[100] w-full px-4 md:px-0">
       {/* Left Section */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center md:static w-10 md:w-auto">
         <button 
           onClick={onMenuClick}
-          className="md:hidden p-2 -ml-2 hover:bg-gray-50 rounded-lg transition-colors"
+          className="md:hidden p-2 hover:bg-gray-50 rounded-lg transition-colors"
         >
           <FiMenu size={24} className="text-black" />
         </button>
-        <h1 className="text-[20px] md:text-[24px] font-medium text-black tracking-[0.3px] leading-[29px] truncate max-w-[200px] md:max-w-none">
+      </div>
+
+      {/* Title - Centered on Mobile, Left on Desktop */}
+      <div className="absolute left-1/2 -translate-x-1/2 md:static md:translate-x-0 md:flex-1 md:pl-[48px]">
+        <h1 className="text-[18px] md:text-[24px] font-medium text-black tracking-[0.3px] leading-tight truncate text-center md:text-left">
           {title}
         </h1>
       </div>
 
-      {/* Right Section */}
-      <div className="flex items-center gap-6">
-        {/* Watch Tutorial Button */}
-        <button className="hidden sm:flex items-center justify-center gap-2 w-[136px] h-[32px] border border-black rounded-[4px] bg-white hover:bg-gray-50 transition-all">
-          <div className="w-[12px] h-[12px] bg-black rounded-[2px]" style={{ clipPath: 'polygon(0 0, 0 100%, 100% 50%)' }} />
-          <span className="text-[12px] font-normal text-black tracking-[-0.2px]">Watch Tutorial</span>
+      {/* Right Section Group (Frame 412 + Right Side Menu) */}
+      <div className="flex items-center gap-[20.83px] pr-[34.5px]">
+        {/* Watch Tutorial Button (Frame 412) */}
+        <button className="hidden sm:flex items-center justify-center gap-[13px] w-[136px] h-[32px] border border-black rounded-[4px] bg-white px-[12px] py-[6px] hover:bg-gray-50 transition-all shrink-0">
+          <div className="w-[20px] h-[20px] bg-black rounded-[2px]" style={{ clipPath: 'polygon(20% 10%, 20% 90%, 85% 50%)' }} />
+          <span className="text-[12px] font-normal text-black tracking-[-0.2px] leading-[15px] whitespace-nowrap">Watch Tutorial</span>
         </button>
 
-        {/* User Profile Area */}
+        {/* User Information Area */}
         <div className="relative" ref={dropdownRef}>
           <div 
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className={`flex items-center gap-2 p-1.5 rounded-xl cursor-pointer transition-all ${isDropdownOpen ? 'bg-gray-100' : 'hover:bg-gray-50'}`}
+            className={`flex items-center gap-[10.41px] cursor-pointer transition-all ${isDropdownOpen ? 'opacity-80' : 'hover:opacity-80'}`}
           >
-            <div className="w-[32px] h-[32px] md:w-[34.71px] md:h-[34.71px] rounded-full overflow-hidden bg-[#D9D9D9] border border-gray-200">
+            <div className="w-[34.71px] h-[34.71px] rounded-full overflow-hidden bg-[#D9D9D9] shrink-0 border-[0.5px] border-black/10">
               <img
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150"
+                src={profileImg}
                 alt="User avatar"
                 className="w-full h-full object-cover"
+                style={{ 
+                  width: '43.39px', 
+                  height: '65.09px',
+                  marginLeft: '-2.6px',
+                  marginTop: '-6.94px',
+                  maxWidth: 'none',
+                  objectPosition: 'center 20%'
+                }}
               />
             </div>
             <FiChevronDown 
-              size={17} 
+              size={17.36} 
               className={`text-[#444750] transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} 
             />
           </div>
 
           {/* Dropdown Menu */}
           {isDropdownOpen && (
-            <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-100 rounded-xl shadow-2xl py-3 z-[110] animate-in fade-in slide-in-from-top-2 duration-200">
+            <div className="absolute right-0 mt-2 w-60 bg-white border border-gray-100 rounded-xl py-3 z-[110] animate-in fade-in slide-in-from-top-2 duration-200">
               <div className="px-4 pb-2 mb-2 border-b border-gray-50">
                 <p className="text-[10px] font-bold text-gray-400 uppercase tracking-widest">Switch Demo View</p>
               </div>

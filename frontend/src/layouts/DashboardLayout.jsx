@@ -3,7 +3,7 @@ import Sidebar from "../components/sidebar/sidebar";
 import MobileSidebar from "../components/sidebar/mobileSidebar";
 import Navbar from "../components/navbar/navbar";
 import FeedbackModal from "../components/feedback/FeedbackModal";
-import FeedbackHistoryModal from "../components/feedback/FeedbackHistoryModal";
+import FeedbackHistory from "../pages/FeedbackHistory";
 import LogoutModal from "../components/auth/LogoutModal";
 import useDashboard from "../hooks/useDashboard";
 import React from "react";
@@ -29,7 +29,6 @@ function DashboardLayout({ children }) {
 
   const handleHistoryOpen = () => {
     setActiveTab("Feedback History");
-    setIsHistoryOpen(true);
   };
 
   return (
@@ -63,8 +62,13 @@ function DashboardLayout({ children }) {
         />
         
         <main className="flex-1 flex flex-col overflow-x-hidden overflow-y-auto">
-          {/* Pass dashboard state to children */}
-          {React.cloneElement(children, { ...dashboardState })}
+          {/* Switch between Dashboard and FeedbackHistory based on activeTab */}
+          {activeTab === "Feedback History" ? (
+            <FeedbackHistory onFeedbackClick={handleFeedbackOpen} />
+          ) : (
+            /* Pass dashboard state to children (Dashboard page) */
+            React.cloneElement(children, { ...dashboardState })
+          )}
         </main>
       </div>
 
@@ -73,16 +77,8 @@ function DashboardLayout({ children }) {
         isOpen={isFeedbackOpen} 
         onClose={() => {
           setIsFeedbackOpen(false);
-          setActiveTab("Dashboard"); // Reset back to dashboard after closing
+          // Don't reset activeTab here if we want to stay on the current page
         }} 
-      />
-
-      <FeedbackHistoryModal
-        isOpen={isHistoryOpen}
-        onClose={() => {
-          setIsHistoryOpen(false);
-          setActiveTab("Dashboard"); // Reset back to dashboard after closing
-        }}
       />
 
       <LogoutModal
@@ -92,6 +88,6 @@ function DashboardLayout({ children }) {
       />
     </div>
   );
-}
+};
 
 export default DashboardLayout;
